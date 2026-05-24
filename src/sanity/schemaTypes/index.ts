@@ -11,6 +11,7 @@ import person from './documents/person'
 import quote from './documents/quote'
 import redirect from './documents/redirect'
 import site from './documents/site'
+import workshop from './documents/workshop'
 // modules
 import accordionList from './modules/accordion-list'
 import blogIndex from './modules/blog-index'
@@ -22,6 +23,10 @@ import cardList from './modules/card-list'
 import customHtml from './modules/custom-html'
 import formModule from './modules/form-module'
 import heroSplit from './modules/hero.split'
+import inLanding from './modules/in-landing'
+import inMewe from './modules/in-mewe'
+import inWorkshop from './modules/in-workshop'
+import inWorkshopCollection from './modules/in-workshop-collection'
 import logoList from './modules/logo-list'
 import personList from './modules/person-list'
 import prose from './modules/prose'
@@ -31,6 +36,8 @@ import statList from './modules/stat-list'
 import stepList from './modules/step-list'
 // objects
 import cta from './objects/cta'
+import inCard from './objects/in-card'
+import inItem from './objects/in-item'
 import link from './objects/link'
 import linkList from './objects/link.list'
 import megamenu from './objects/megamenu'
@@ -53,9 +60,12 @@ export const schema: SchemaPluginOptions = {
 		navigation,
 		person,
 		quote,
+		workshop,
 
 		// objects
 		cta,
+		inCard,
+		inItem,
 		link,
 		linkList,
 		megamenu,
@@ -73,6 +83,10 @@ export const schema: SchemaPluginOptions = {
 		customHtml,
 		formModule,
 		heroSplit,
+		inLanding,
+		inMewe,
+		inWorkshop,
+		inWorkshopCollection,
 		logoList,
 		personList,
 		prose,

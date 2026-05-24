@@ -1,0 +1,96 @@
+.root {
+	padding: clamp(72px, 10vw, 132px) 24px 34px;
+	background: #fffaf0;
+	color: #111;
+}
+
+.inner {
+	margin-inline: auto;
+	max-width: 1240px;
+}
+
+.top {
+	display: grid;
+	grid-template-columns: minmax(0, 1.25fr) minmax(360px, 0.75fr);
+	gap: clamp(48px, 10vw, 140px);
+	align-items: center;
+}
+
+.ask {
+	max-width: 760px;
+	font-family: var(--font-merriweather), Georgia, serif;
+	font-size: clamp(3.2rem, 5.4vw, 5.35rem);
+	font-style: italic;
+	font-weight: 300;
+	line-height: 1.08;
+	letter-spacing: 0;
+}
+
+.ask em {
+	color: inherit;
+	font-style: italic;
+}
+
+.nav :global(ul) {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(56px, 10vw, 128px);
+	list-style: none;
+	padding: 0;
+}
+
+.nav :global(li) {
+	margin: 0;
+}
+
+.nav :global(a) {
+	color: #66615a;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.nav :global(a:hover) {
+	color: #111;
+}
+
+.nav :global(li > div:first-child a) {
+	display: inline-block;
+	margin-bottom: 20px;
+	color: #111;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.26em;
+	text-transform: uppercase;
+}
+
+.nav :global(li li a) {
+	display: inline-block;
+	padding-block: 4px;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.45;
+}
+
+.bottom {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	margin-top: clamp(64px, 8vw, 104px);
+	border-top: 1px solid rgb(17 17 17 / 0.12);
+	padding-top: 34px;
+	color: #6f6961;
+	font-size: 0.86rem;
+	font-weight: 400;
+	letter-spacing: 0.12em;
+}
+
+@media (max-width: 760px) {
+	.top,
+	.nav :global(ul) {
+		grid-template-columns: 1fr;
+	}
+
+	.bottom {
+		flex-direction: column;
+	}
+}

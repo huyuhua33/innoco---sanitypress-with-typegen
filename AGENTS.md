@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Commands
 
@@ -94,7 +94,3 @@ src/sanity/schemaTypes/
 ### Styling
 
 Tailwind 4 with PostCSS. Global styles in `src/app.css`. Use `cn()` for conditional class merging.
-
-### Notice
-
-Always consider the structure of the project itself, then base one the structure to add / edit / delet / move the document with the same thought.

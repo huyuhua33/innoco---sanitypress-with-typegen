@@ -42,6 +42,69 @@ export default defineType({
 			group: 'navigation',
 		}),
 		defineField({
+			name: 'languageSelector',
+			title: 'Language selector',
+			type: 'object',
+			group: 'navigation',
+			initialValue: {
+				enabled: false,
+				languages: [],
+			},
+			fields: [
+				defineField({
+					name: 'enabled',
+					type: 'boolean',
+					initialValue: true,
+				}),
+				defineField({
+					name: 'languages',
+					type: 'array',
+					of: [
+						{
+							type: 'object',
+							fields: [
+								defineField({
+									name: 'label',
+									type: 'string',
+									validation: (Rule) => Rule.required(),
+								}),
+								defineField({
+									name: 'code',
+									type: 'string',
+								}),
+								defineField({
+									name: 'href',
+									title: 'URL',
+									type: 'url',
+									validation: (Rule) =>
+										Rule.uri({
+											scheme: ['http', 'https'],
+											allowRelative: true,
+										}),
+								}),
+								defineField({
+									name: 'active',
+									type: 'boolean',
+									initialValue: false,
+								}),
+								defineField({
+									name: 'disabled',
+									type: 'boolean',
+									initialValue: false,
+								}),
+							],
+							preview: {
+								select: {
+									title: 'label',
+									subtitle: 'code',
+								},
+							},
+						},
+					],
+				}),
+			],
+		}),
+		defineField({
 			name: 'footer',
 			type: 'reference',
 			to: [{ type: 'navigation' }],

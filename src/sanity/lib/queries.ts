@@ -39,6 +39,38 @@ const NAVIGATION_QUERY = groq`
 	}
 `
 
+// @sanity-typegen-ignore
+const WORKSHOP_CARD_QUERY = groq`
+	'_key': _id,
+	'label': cardLabel,
+	'tags': cardTags,
+	'color': cardColor,
+	'image': cardImage{
+		...,
+		asset->{
+			...,
+			metadata
+		}
+	},
+	title,
+	'description': cardDescription,
+	'actionLabel': cardActionLabel,
+	'meta': cardMeta,
+	'link': select(
+		defined(page) => {
+			'type': 'internal',
+			'internal': page->{
+				_type,
+				title,
+				'slug': select(
+					metadata.slug.current == 'index' => '/',
+					'/' + metadata.slug.current
+				)
+			}
+		}
+	)
+`
+
 const SITE_QUERY = groq`*[_type == 'site'][0]{
 	...,
 	header->{ ${NAVIGATION_QUERY} },
@@ -79,6 +111,45 @@ export const MODULES_QUERY = groq`
 				link{ ${LINK_QUERY} }
 			}
 		}
+	},
+	_type == 'in-landing' => {
+		cards[]{
+			...,
+			image{
+				...,
+				asset->{
+					...,
+					metadata
+				}
+			},
+			link{ ${LINK_QUERY} }
+		}
+	},
+	_type == 'in-mewe' => {
+		cards[]{
+			...,
+			image{
+				...,
+				asset->{
+					...,
+					metadata
+				}
+			},
+			link{ ${LINK_QUERY} }
+		}
+	},
+	_type == 'in-workshop' => {
+		workshop->
+	},
+	_type == 'in-workshop-collection' => {
+		'workshops': select(
+			defined(workshops[0]) => workshops[]->{
+				${WORKSHOP_CARD_QUERY}
+			},
+			*[_type == 'workshop']|order(title asc){
+				${WORKSHOP_CARD_QUERY}
+			}
+		)
 	},
 	_type == 'logo-list' => {
 		logos[]{

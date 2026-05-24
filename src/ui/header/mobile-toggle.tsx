@@ -1,12 +1,13 @@
-import { VscChromeClose, VscMenu } from 'react-icons/vsc'
+import css from './header.module.css'
 
 export default function () {
 	return (
-		<label className="text-xl md:hidden">
+		<label className={css.menuButton} aria-label="Open menu">
 			<input id="header-open" type="checkbox" hidden />
-
-			<VscMenu className="header-open:hidden" title="Open" />
-			<VscChromeClose className="header-not-open:hidden" title="Close" />
+			<span className={css.menuBars} aria-hidden="true">
+				<span />
+				<span />
+			</span>
 		</label>
 	)
 }

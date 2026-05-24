@@ -1,13 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
-	--font-sans: 'Geist', sans-serif;
+	--font-sans: var(--font-roboto), system-ui, sans-serif;
+	--font-serif: var(--font-merriweather), Georgia, serif;
 
-	--color-background: var(--color-neutral-100);
-	--color-foreground: var(--color-neutral-900);
-	--color-stroke: var(--color-neutral-200);
+	--color-background: #fffaf0;
+	--color-foreground: #111111;
+	--color-stroke: rgb(17 17 17 / 0.12);
 
-	--color-primary: LinkText;
+	--color-primary: #e33283;
 
 	--spacing-lh: 1lh;
 	--spacing-ch: 1ch;
@@ -59,6 +60,17 @@
 		@apply accent-primary caret-primary;
 	}
 
+	body {
+		background:
+			radial-gradient(
+				circle at 18% 8%,
+				rgb(243 204 56 / 0.16),
+				transparent 32vw
+			),
+			var(--color-background);
+		font-family: var(--font-sans);
+	}
+
 	details {
 		&::details-content {
 			overflow: clip;
@@ -89,7 +101,10 @@
 /* typography */
 
 @utility h-base {
-	@apply font-bold;
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: 0;
 }
 
 @utility h0 {
@@ -121,7 +136,7 @@
 }
 
 @utility technical {
-	@apply font-mono font-bold tracking-widest uppercase;
+	@apply font-sans font-medium tracking-[0.16em] uppercase;
 }
 
 /* ctas, links */
@@ -133,23 +148,40 @@
 	justify-content: center;
 	text-align: center;
 	gap: 0.5em;
-	padding: 0.25em 0.5em;
+	border-radius: 999px;
+	padding: 0.875em 1.5em;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition:
+		background-color 0.25s,
+		border-color 0.25s,
+		color 0.25s,
+		gap 0.25s,
+		transform 0.25s;
+
+	&:hover {
+		gap: 0.9em;
+		transform: translateY(-2px);
+	}
 }
 
 @utility action {
-	@apply action-base bg-foreground text-background;
+	@apply action-base bg-primary text-white hover:bg-[#43326d];
 }
 
 @utility action-outline {
-	@apply action-base bg-background border-stroke text-foreground border hover:border-current;
+	@apply action-base bg-transparent border-stroke text-foreground border hover:border-primary hover:text-primary;
 }
 
 @utility ghost {
-	@apply action-base bg-background text-foreground hover:bg-foreground/5;
+	@apply action-base bg-transparent text-foreground hover:text-primary;
 }
 
 @utility link {
-	@apply text-primary cursor-pointer underline hover:decoration-2;
+	@apply text-primary cursor-pointer underline underline-offset-4 hover:decoration-2;
 }
 
 @utility input {
@@ -160,7 +192,7 @@
 /* components */
 
 @utility section {
-	@apply mx-auto max-w-7xl px-4 py-12 md:px-8;
+	@apply mx-auto max-w-[1240px] px-6 py-16 md:px-10 md:py-24;
 }
 
 @utility prose {

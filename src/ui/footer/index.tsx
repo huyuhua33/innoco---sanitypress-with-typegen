@@ -1,27 +1,33 @@
 import { PortableText } from 'next-sanity'
 import { getSite } from '@/sanity/lib/queries'
-import Logo from '@/ui/logo'
-import SocialNavigation from '@/ui/social-navigation'
+import css from './footer.module.css'
 import Navigation from './navigation'
 
 export default async function () {
 	const site = await getSite()
 
 	return (
-		<footer>
-			<div className="section space-y-4">
-				<div className="flex justify-between gap-4 max-md:flex-col md:items-start">
-					<div className="flex flex-col items-center gap-4 max-md:text-center md:items-start">
-						<Logo className="[&_img]:h-[2lh]" />
-						<PortableText value={site?.footerContent ?? []} />
-						<SocialNavigation className="[&_svg]:size-lh link flex items-center gap-4 max-md:justify-center" />
+		<footer className={css.root}>
+			<div className={css.inner}>
+				<div className={css.top}>
+					<div>
+						<div className={css.ask}>
+							<em>What kind of ancestor</em>
+							<br />
+							do we want to be?
+						</div>
 					</div>
 
-					<Navigation />
+					<div className={css.nav}>
+						<Navigation />
+					</div>
 				</div>
 
-				<div className="[&_a]:link text-center">
-					<PortableText value={site?.copyright ?? []} />
+				<div className={css.bottom}>
+					<span>{site?.title ?? 'INNOCO'} · A studio for shared growth</span>
+					<span>
+						<PortableText value={site?.copyright ?? []} />
+					</span>
 				</div>
 			</div>
 		</footer>

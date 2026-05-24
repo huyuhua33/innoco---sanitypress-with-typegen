@@ -14,7 +14,7 @@ export default function ({
 		<li className={cn('grid gap-1 text-left', className)} {...props}>
 			<div>
 				<SanityLink
-					className="text-foreground/50 [[href]]:hover:underline"
+					className="[[href]]:hover:underline"
 					link={link as SanityLinkType}
 				/>
 			</div>
@@ -23,7 +23,7 @@ export default function ({
 				{links?.map((item) => (
 					<li key={item._key}>
 						<SanityLink
-							className="inline-block py-[.3ch] text-current hover:underline"
+							className="inline-block py-[.3ch] hover:underline"
 							link={item as SanityLinkType}
 						/>
 					</li>

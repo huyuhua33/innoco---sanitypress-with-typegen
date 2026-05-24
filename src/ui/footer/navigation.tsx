@@ -8,7 +8,7 @@ export default async function () {
 
 	return (
 		<nav>
-			<ul className="gap-y-lh flex items-start justify-center gap-x-[2lh] max-md:flex-col">
+			<ul>
 				{site?.footer?.items?.map((item) => {
 					switch (item._type) {
 						case 'link':

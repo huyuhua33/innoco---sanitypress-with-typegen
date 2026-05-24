@@ -15,6 +15,10 @@ import CardList from './card-list'
 import CustomHTML from './custom-html'
 import FormModule from './form-module'
 import HeroSplit from './hero.split'
+import INLanding from './in-landing'
+import INMewe from './in-mewe'
+import INWorkshop from './in-workshop'
+import INWorkshopCollection from './in-workshop-collection'
 import LogoList from './logo-list'
 import PersonList from './person-list'
 import Prose from './prose'
@@ -34,6 +38,10 @@ const MODULES_MAP = {
 	'custom-html': CustomHTML,
 	'form-module': FormModule,
 	'hero.split': HeroSplit,
+	'in-landing': INLanding,
+	'in-mewe': INMewe,
+	'in-workshop': INWorkshop,
+	'in-workshop-collection': INWorkshopCollection,
 	'logo-list': LogoList,
 	'person-list': PersonList,
 	prose: Prose,
